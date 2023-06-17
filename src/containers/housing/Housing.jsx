@@ -1,12 +1,21 @@
-import React from 'react';
-import possibilityImage from '../../assets/possibility.png';
+import React, {useState} from 'react';
 import house from '../../assets/alex-house.png'
+import smhouse from '../../assets/alex-house-small.png'
 import './housing.css';
 
-const Housing = () => (
+
+const Housing = () => {
+  const [loaded, setLoaded] = useState(false);
+
+  const handleLoad = () => {
+    console.log("loaded");
+    setLoaded(true);
+  }
+
+  return(
   <div className="rd__housing section__padding" id="housing">
-    <div className="rd__housing-image">
-      <img src={house} alt="housing" />
+    <div className={loaded ? "rd__housing-image blurred-img loaded" : "rd__housing-image blurred-img"} style={{backgroundImage: `url(${smhouse})`}}>
+      <img src={house} alt="housing"  loading="lazy" onLoad={handleLoad}/>
     </div>
     <div className="rd__housing-content">
       <h4>View Our Partner Homes</h4>
@@ -16,5 +25,6 @@ const Housing = () => (
     </div>
   </div>
 );
+};
 
 export default Housing;

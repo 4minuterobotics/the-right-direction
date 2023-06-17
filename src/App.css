@@ -50,6 +50,44 @@ a {
 	animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
+
+/*********************** image layz loading shit *****************/
+.blurred-img{
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  animation: pulse 2.5s infinite;
+  filter: blur(10px);
+}
+
+.blurred-img img{
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.blurred-img.loaded{
+  animation: none;
+  filter: blur(0px);
+}
+
+.blurred-img.loaded img{
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0%{
+    opacity: .5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: .5;
+  }
+}
+/********************************************************/ 
+
+
 @-webkit-keyframes scale-up-center {
   0% {
     -webkit-transform: scale(0.5);
